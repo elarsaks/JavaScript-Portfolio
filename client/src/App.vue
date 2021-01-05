@@ -39,7 +39,7 @@ export default {
       loading: false,
       names: [],
       error: null,
-      pages: ['table', 'graph'],
+      pages: ['table', 'reverse-table'],
     }
   },
   created() {

@@ -15,8 +15,8 @@ const router = new VueRouter({
       props: true,
     },
     {
-      path: '/graph',
-      name: 'graph',
+      path: '/reverse',
+      name: 'reverse-table',
       component: Table,
     },
   ],
