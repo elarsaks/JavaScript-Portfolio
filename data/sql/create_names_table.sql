@@ -1,0 +1,5 @@
+CREATE TABLE names
+(
+	name VARCHAR(124) PRIMARY KEY NOT NULL,
+	amount INTEGER
+);

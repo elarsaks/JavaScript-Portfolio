@@ -1,0 +1,47 @@
+version: '3.5'
+services:
+  #  client:
+  #    build:
+  #      context: ./client
+  #    command: 'sh -c "npm run serve"'
+  #    container_name: client
+  #      depends_on:
+  #        - api
+  #    restart: unless-stopped
+  #    ports:
+  #      - 8081:8081
+  #    volumes:
+  #      - './client/src:/app/src'
+  #      - './client/package.json:/app/package.json'
+  #      - './client/package-lock.json:/app/package-lock.json'
+  api:
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    command: 'sh -c "./wait-for pg:5432 -- npm start"'
+    depends_on:
+      - pg
+    restart: unless-stopped
+    ports:
+      - 3001:3001
+    volumes:
+      - './api/src/:/app/src'
+      - './api/package.json:/app/package.json'
+      - './api/package-lock.json:/app/package-lock.json'
+  #PostGreSQL
+  pg:
+    build:
+      context: ./data/
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: solita
+      DATABASE_URL: postgres://postgres:password@pg:5432/solita
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+volumes:
+  postgres_data:

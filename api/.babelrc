@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@controller": "./src/controller",
+          "@repository": "./src/repository",
+          "@router": "./src/router",
+          "@service": "./src/service"
+        }
+      }
+    ]
+  ]
+}
