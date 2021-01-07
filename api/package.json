@@ -4,7 +4,7 @@
   "description": "api",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon --exec babel-node ./src/app.js"
   },
   "author": "Elar Saks",
   "license": "ISC",
@@ -12,10 +12,13 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/register": "^7.12.10",
+    "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-root-import": "^6.6.0",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/node": "^7.12.10",
     "express": "^4.17.1",
     "pg-promise": "^10.8.6"
   }
