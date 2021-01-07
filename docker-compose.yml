@@ -14,20 +14,20 @@ services:
   #      - './client/src:/app/src'
   #      - './client/package.json:/app/package.json'
   #      - './client/package-lock.json:/app/package-lock.json'
-  api:
-    build:
-      context: ./api/
-      dockerfile: Dockerfile
-    command: 'sh -c "./wait-for pg:5432 -- npm start"'
-    depends_on:
-      - pg
-    restart: unless-stopped
-    ports:
-      - 3001:3001
-    volumes:
-      - './api/src/:/app/src'
-      - './api/package.json:/app/package.json'
-      - './api/package-lock.json:/app/package-lock.json'
+  #api:
+  #  build:
+  #    context: ./api/
+  #    dockerfile: Dockerfile
+  #  command: 'sh -c "./wait-for pg:5432 -- npm start"'
+  #  depends_on:
+  #    - pg
+  #  restart: unless-stopped
+  #  ports:
+  #    - 3001:3001
+  #  volumes:
+  #    - './api/src/:/app/src'
+  #    - './api/package.json:/app/package.json'
+  #    - './api/package-lock.json:/app/package-lock.json'
   #PostGreSQL
   pg:
     build:

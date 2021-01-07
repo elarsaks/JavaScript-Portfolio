@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import controller from '@controller'
 
 const router = Router().get('/', function (req, res, next) {
   console.log('Request Type:', req.method)
@@ -7,4 +6,4 @@ const router = Router().get('/', function (req, res, next) {
   res.send('..')
 })
 
-export { router }
+export default router
