@@ -2,10 +2,7 @@ import { Router } from 'express'
 import postgres from '@repository/postgres'
 
 export default class namesController {
-  static insertNames(req, res, next) {
-    return ''
-  }
-
+  // Insert starting data
   static populatePostgres(names, next) {
     let resp = names.map(name => {
       postgres.addOneName(name)
@@ -13,4 +10,6 @@ export default class namesController {
 
     return Promise.all(resp)
   }
+
+  static getNames
 }
