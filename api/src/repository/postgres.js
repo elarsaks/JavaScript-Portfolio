@@ -15,14 +15,22 @@ function addOneName(name) {
 
 function deleteAllNames() {
   return postgres.db
-    .none(
-      `DELETE
-    FROM names`
-    )
+    .none(`DELETE FROM names`)
     .catch(err => console.log(err))
+}
+
+function getSortedNames(params) {
+  let sql = `select * from names order by ${params.column} ${params.order}`
+  return (
+    postgres.db
+      .many(sql)
+      // ToDo, send errors to the client
+      .catch(err => console.log(err))
+  )
 }
 
 export default {
   addOneName,
   deleteAllNames,
+  getSortedNames,
 }
