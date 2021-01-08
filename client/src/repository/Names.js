@@ -84,7 +84,7 @@ const names = [
 ]
 
 function getNames() {
-  let temp = new Promise((resolve) => {
+  let temp = new Promise(resolve => {
     resolve(names)
   })
 

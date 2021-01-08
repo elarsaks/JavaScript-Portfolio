@@ -9,7 +9,8 @@
       elevation="2"
     >
       <p>
-        Error: Oops something went wrong :( Please contact system administrator.
+        Error: Oops something went wrong :( Please contact system
+        administrator.
       </p>
     </v-alert>
 
@@ -26,7 +27,7 @@
 <script>
 import AppBar from './components/AppBar'
 import Footer from './components/Footer'
-import Names from './repository/Names.js'
+import { mapState } from 'vuex'
 
 export default {
   name: 'App',
@@ -34,32 +35,12 @@ export default {
     AppBar,
     Footer,
   },
+  computed: mapState(['loading', 'names']),
   data() {
     return {
-      loading: false,
-      names: [],
       error: null,
       pages: ['table', 'reverse-table'],
     }
-  },
-  created() {
-    this.fetchData()
-  },
-  watch: {
-    $route: 'fetchData',
-  },
-  methods: {
-    fetchData() {
-      this.loading = true
-
-      Names.getNames(this.$route.name)
-        .then(names => {
-          this.loading = false
-          console.log(names)
-          this.names = names
-        })
-        .catch(err => (this.error = err))
-    },
   },
 }
 </script>

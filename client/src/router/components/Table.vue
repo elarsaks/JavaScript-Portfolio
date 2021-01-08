@@ -36,6 +36,7 @@
 
 <script>
 import SortIcon from '../../components/SortIcon.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Table',
@@ -51,6 +52,12 @@ export default {
   components: {
     SortIcon,
   },
+  created() {
+    this.getNames({
+      column: this.selectedColumn,
+      order: this.sort[this.selectedColumn],
+    })
+  },
   data() {
     return {
       selectedColumn: 'names',
@@ -61,6 +68,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getNames']),
     setSortBy(column) {
       if (this.selectedColumn == column) {
         this.sort[column] = !this.sort[column]
@@ -68,6 +76,11 @@ export default {
         this.selectedColumn = column
         this.sort[column] = !this.sort[column]
       }
+
+      this.getNames({
+        column: this.selectedColumn,
+        order: this.sort[this.selectedColumn],
+      })
     },
   },
 }
