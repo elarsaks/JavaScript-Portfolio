@@ -12,12 +12,9 @@ export default class namesController {
   }
 
   static getSortedNames(req, res) {
-    // TODO: continue after finishing client ...
-    console.log(req)
-    let params = {
-      column: 'amount',
-      order: 'ASC',
-    }
-    return postgres.getSortedNames(params)
+    return postgres
+      .getSortedNames(req.query)
+      .then(data => res.status(200).send(data))
+      .catch(err => res.status(500).send(err))
   }
 }

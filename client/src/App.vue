@@ -35,10 +35,9 @@ export default {
     AppBar,
     Footer,
   },
-  computed: mapState(['loading', 'names']),
+  computed: mapState(['error', 'loading', 'names']),
   data() {
     return {
-      error: null,
       pages: ['table', 'reverse-table'],
     }
   },

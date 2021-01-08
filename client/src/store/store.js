@@ -6,10 +6,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    error: null,
     names: [],
     loading: false,
   },
   mutations: {
+    setError(state, error) {
+      state.error = error
+    },
     setLoading(state) {
       state.loading = !state.loading
     },
@@ -23,7 +27,15 @@ export default new Vuex.Store({
       repository
         .getNames(params)
         .then(data => commit('setNames', data))
-        .then(() => commit('setLoading'))
+        .then(() => {
+          // TODO: test error handling
+          commit('setError', null)
+          commit('setLoading')
+        })
+        .catch(err => {
+          console.log(err)
+          commit('setError', err)
+        })
     },
   },
 })

@@ -55,7 +55,7 @@ export default {
   created() {
     this.getNames({
       column: this.selectedColumn,
-      order: this.sort[this.selectedColumn],
+      order: this.sort[this.selectedColumn] ? 'DESC' : 'ASC',
     })
   },
   data() {
@@ -79,7 +79,7 @@ export default {
 
       this.getNames({
         column: this.selectedColumn,
-        order: this.sort[this.selectedColumn],
+        order: this.sort[this.selectedColumn] ? 'DESC' : 'ASC',
       })
     },
   },
