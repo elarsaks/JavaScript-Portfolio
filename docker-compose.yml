@@ -4,19 +4,19 @@ networks:
     name: solita
     driver: bridge
 services:
-  #client:
-  #  build:
-  #    context: ./client
-  #  command: 'sh -c "npm run serve"'
-  #  depends_on:
-  #    - api
-  #  restart: unless-stopped
-  #  ports:
-  #    - 8081:8081
-  #  volumes:
-  #    - './client/src:/app/src'
-  #    - './client/package.json:/app/package.json'
-  #    - './client/package-lock.json:/app/package-lock.json'
+  client:
+    build:
+      context: ./client
+    command: 'sh -c "npm run serve"'
+    depends_on:
+      - api
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    volumes:
+      - './client/src:/app/src'
+      - './client/package.json:/app/package.json'
+      - './client/package-lock.json:/app/package-lock.json'
   api:
     container_name: api
     build:
