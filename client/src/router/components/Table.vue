@@ -4,10 +4,23 @@
       <thead>
         <tr>
           <th class="text-left">
-            Name
+            Names (Count - {{ names.length }})
+            <SortIcon
+              column="names"
+              :selectedColumn="selectedColumn"
+              :sort="sort.names"
+              @sortBy="setSortBy"
+            />
           </th>
+
           <th class="text-left">
-            Amount
+            Amount (Total - ??)
+            <SortIcon
+              column="amount"
+              :selectedColumn="selectedColumn"
+              :sort="sort.amount"
+              @sortBy="setSortBy"
+            />
           </th>
         </tr>
       </thead>
@@ -22,6 +35,8 @@
 </template>
 
 <script>
+import SortIcon from '../../components/SortIcon.vue'
+
 export default {
   name: 'Table',
   props: {
@@ -31,6 +46,28 @@ export default {
       default() {
         return []
       },
+    },
+  },
+  components: {
+    SortIcon,
+  },
+  data() {
+    return {
+      selectedColumn: 'names',
+      sort: {
+        names: true,
+        amount: false,
+      },
+    }
+  },
+  methods: {
+    setSortBy(column) {
+      if (this.selectedColumn == column) {
+        this.sort[column] = !this.sort[column]
+      } else {
+        this.selectedColumn = column
+        this.sort[column] = !this.sort[column]
+      }
     },
   },
 }
