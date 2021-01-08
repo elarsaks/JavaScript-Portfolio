@@ -1,43 +1,57 @@
 version: '3.5'
+networks:
+  solita:
+    name: solita
+    driver: bridge
 services:
-  #  client:
-  #    build:
-  #      context: ./client
-  #    command: 'sh -c "npm run serve"'
-  #    container_name: client
-  #      depends_on:
-  #        - api
-  #    restart: unless-stopped
-  #    ports:
-  #      - 8081:8081
-  #    volumes:
-  #      - './client/src:/app/src'
-  #      - './client/package.json:/app/package.json'
-  #      - './client/package-lock.json:/app/package-lock.json'
-  #api:
+  #client:
   #  build:
-  #    context: ./api/
-  #    dockerfile: Dockerfile
-  #  command: 'sh -c "./wait-for pg:5432 -- npm start"'
+  #    context: ./client
+  #  command: 'sh -c "npm run serve"'
   #  depends_on:
-  #    - pg
+  #    - api
   #  restart: unless-stopped
   #  ports:
-  #    - 3001:3001
+  #    - 8081:8081
   #  volumes:
-  #    - './api/src/:/app/src'
-  #    - './api/package.json:/app/package.json'
-  #    - './api/package-lock.json:/app/package-lock.json'
-  #PostGreSQL
-  pg:
+  #    - './client/src:/app/src'
+  #    - './client/package.json:/app/package.json'
+  #    - './client/package-lock.json:/app/package-lock.json'
+  api:
+    container_name: api
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    networks: 
+      - solita
+    depends_on:
+      - postgres
+    command: 'sh -c "./wait-for postgres:5432 -- npm start"'
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES:PORT: 5432
+      POSTGRES_DB: solita
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+    restart: unless-stopped
+    ports:
+      - 3001:3001
+    volumes:
+      - './api/src/:/app/src'
+      - './api/package.json:/app/package.json'
+      - './api/package-lock.json:/app/package-lock.json'
+  postgres:
+    container_name: postgres
     build:
       context: ./data/
       dockerfile: Dockerfile
+    networks: 
+      - solita
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: postgres
       POSTGRES_DB: solita
-      DATABASE_URL: postgres://postgres:password@pg:5432/solita
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+      DATABASE_URL: postgres://postgres:password@postgres:5432/solita
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
