@@ -23,19 +23,15 @@ export default new Vuex.Store({
   },
   actions: {
     getNames({ commit }, params) {
+      // Set error to null, if last call returned error
+      commit('setError', null)
       commit('setLoading')
+
       repository
         .getNames(params)
         .then(data => commit('setNames', data))
-        .then(() => {
-          // TODO: test error handling
-          commit('setError', null)
-          commit('setLoading')
-        })
-        .catch(err => {
-          console.log(err)
-          commit('setError', err)
-        })
+        .then(() => commit('setLoading'))
+        .catch(err => commit('setError', err))
     },
   },
 })

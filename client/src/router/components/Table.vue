@@ -14,7 +14,7 @@
           </th>
 
           <th class="text-left">
-            Amount (Total - ??)
+            Amount (Total - {{ mountSum }})
             <SortIcon
               column="amount"
               :selectedColumn="selectedColumn"
@@ -58,6 +58,12 @@ export default {
       order: this.sort[this.selectedColumn] ? 'DESC' : 'ASC',
     })
   },
+  computed: {
+    // TODO: Use SQL to get the SUM of amounts
+    mountSum() {
+      return this.names.length > 0 ? this.getAmountSum() : 0
+    },
+  },
   data() {
     return {
       selectedColumn: 'names',
@@ -81,6 +87,14 @@ export default {
         column: this.selectedColumn,
         order: this.sort[this.selectedColumn] ? 'DESC' : 'ASC',
       })
+    },
+    getAmountSum() {
+      // Create array of amounts and reduce it into a single value
+      return this.names
+        .map(name => name.amount)
+        .reduce((accumulator, currentvalue) => {
+          return accumulator + currentvalue
+        })
     },
   },
 }

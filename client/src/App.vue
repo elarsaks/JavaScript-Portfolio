@@ -14,7 +14,7 @@
       </p>
     </v-alert>
 
-    <v-progress-linear v-if="loading" value="15" />
+    <v-progress-linear v-if="loading" class="loading" value="15" />
 
     <div id="content-wrapper">
       <router-view :names="names" />
@@ -50,5 +50,10 @@ export default {
   width: 90vw;
   margin-left: auto;
   margin-right: auto;
+}
+
+.loading {
+  position: absolute;
+  margin-top: 9vh;
 }
 </style>
