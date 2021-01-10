@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import Table from './components/Table.vue'
+import ReverseTable from './components/ReverseTable.vue'
 
 const router = new VueRouter({
   mode: 'history',
@@ -15,9 +16,9 @@ const router = new VueRouter({
       props: true,
     },
     {
-      path: '/reverse',
+      path: '/reverse-table',
       name: 'reverse-table',
-      component: Table,
+      component: ReverseTable,
     },
   ],
 })

@@ -4,16 +4,6 @@
       <thead>
         <tr>
           <th class="text-left">
-            Names (Count - {{ names.length }})
-            <SortIcon
-              column="names"
-              :selectedColumn="selectedColumn"
-              :sort="sort.names"
-              @sortBy="setSortBy"
-            />
-          </th>
-
-          <th class="text-left">
             Amount (Total - {{ mountSum }})
             <SortIcon
               column="amount"
@@ -22,12 +12,21 @@
               @sortBy="setSortBy"
             />
           </th>
+          <th class="text-left">
+            Names (Count - {{ names.length }})
+            <SortIcon
+              column="names"
+              :selectedColumn="selectedColumn"
+              :sort="sort.names"
+              @sortBy="setSortBy"
+            />
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in names" :key="item.name">
-          <td>{{ item.name }}</td>
           <td>{{ item.amount }}</td>
+          <td>{{ item.name }}</td>
         </tr>
       </tbody>
     </template>
@@ -43,7 +42,7 @@ import SortIcon from '../../components/SortIcon.vue'
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'Table',
+  name: 'ReverseTable',
   props: {
     names: {
       type: Array,
