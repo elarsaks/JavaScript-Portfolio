@@ -25,14 +25,16 @@ services:
     networks: 
       - solita
     depends_on:
+      - redis
       - postgres
-    command: 'sh -c "./wait-for postgres:5432 -- npm start"'
+    command: 'sh -c "./wait-for postgres:5432 redis:6379 -- npm start"'
     environment:
       POSTGRES_HOST: postgres
       POSTGRES:PORT: 5432
       POSTGRES_DB: solita
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
+      REDIS_URL: redis://redis:6379
     restart: unless-stopped
     ports:
       - 3001:3001
@@ -40,6 +42,12 @@ services:
       - './api/src/:/app/src'
       - './api/package.json:/app/package.json'
       - './api/package-lock.json:/app/package-lock.json'
+  redis:
+    image: redis:alpine
+    networks: 
+      - solita
+    ports:
+      - 6379:6379
   postgres:
     container_name: postgres
     build:

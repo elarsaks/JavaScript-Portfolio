@@ -1,5 +1,6 @@
 import { Router } from 'express'
-import postgresController from '@controller/postgresController'
+import { redisController } from '@controller'
+import { postgresController } from '@controller'
 
 const router = Router()
   // Set CORS header to all the requests
@@ -8,11 +9,24 @@ const router = Router()
     next()
   })
 
-  // TODO: return api info from the root route
   .get('/', function (req, res, next) {
-    console.log('Request Type:', req.method)
-    res.send('..')
+    // Disable client cache
+    res.set({ 'Cache-Control': 'no-cache' })
+    res.send({
+      names: {
+        link: '/names',
+        params: {
+          column: 'String (column name)',
+          order: 'String ("ASC" or "DESC")',
+        },
+      },
+    })
   })
-  .get('/names', postgresController.getSortedNames)
+
+  .get(
+    '/names',
+    redisController.getSortedNames,
+    postgresController.getSortedNames
+  )
 
 export default router

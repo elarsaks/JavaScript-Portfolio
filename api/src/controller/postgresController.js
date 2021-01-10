@@ -1,5 +1,5 @@
-import { Router } from 'express'
-import postgres from '@repository/postgres'
+import { postgres } from '@repository'
+import { redisController } from '@controller'
 
 export default class namesController {
   // Insert initial data
@@ -14,7 +14,15 @@ export default class namesController {
   static getSortedNames(req, res) {
     return postgres
       .getSortedNames(req.query)
+      .then(data => {
+        // Set data into Redis cache
+        redisController.setSingleSortedName(req, data)
+        return data
+      })
       .then(data => res.status(200).send(data))
-      .catch(err => res.status(500).send(err))
+      .catch(err => {
+        console.log(err)
+        res.status(500).send(err)
+      })
   }
 }
