@@ -5,7 +5,7 @@ import routes from './router/routes.js'
 import providedNames from './repository/names.json'
 
 import { Provider } from 'react-redux'
-import store from './store/store.js'
+import store from './state/store.js'
 
 export default function App() {
   return (
@@ -34,7 +34,7 @@ export default function App() {
         }}
       >
         <Link to='/table'>Table</Link>
-        <Link to='/reverse-table'>ReverseTable</Link>
+        <Link to='/info'>Info</Link>
       </Navbar>
 
       <Provider store={store}>

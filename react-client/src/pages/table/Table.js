@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Table as DataTable } from 'react-materialize'
-import SortButton from './helpers/SortButton'
+import SortButton from './components/SortButton'
 
 const style = {
   dataTable: {
@@ -11,7 +11,7 @@ const style = {
 }
 
 export default function Table(props) {
-  const [state, setState] = useState({
+  const [sorting, setSorting] = useState({
     selectedColumn: 'names',
     sortOrder: {
       names: true,
@@ -20,12 +20,12 @@ export default function Table(props) {
   })
 
   function sortTable(column) {
-    setState({
-      ...state,
+    setSorting({
+      ...sorting,
       selectedColumn: column,
       sortOrder: {
-        ...state.sortOrder,
-        [column]: !state.sortOrder[column],
+        ...sorting.sortOrder,
+        [column]: !sorting.sortOrder[column],
       },
     })
 
@@ -39,14 +39,14 @@ export default function Table(props) {
           <th>
             <SortButton
               text='names'
-              state={state}
+              sorting={sorting}
               sortTable={() => sortTable('names')}
             />
           </th>
           <th>
             <SortButton
               text='amount'
-              state={state}
+              sorting={sorting}
               sortTable={() => sortTable('amount')}
             />
           </th>

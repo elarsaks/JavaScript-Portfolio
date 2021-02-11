@@ -1,4 +1,4 @@
-export default function ReverseTable() {
+export default function Info() {
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>Not a TABLE!</h1>

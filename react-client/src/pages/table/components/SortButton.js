@@ -6,7 +6,7 @@ export default function SortButton(props) {
       node='button'
       waves='light'
       className={
-        props.state.selectedColumn === props.text
+        props.sorting.selectedColumn === props.text
           ? 'blue darken-4'
           : 'blue darken-2'
       }
@@ -14,7 +14,9 @@ export default function SortButton(props) {
     >
       {props.text}
       <Icon right>
-        {props.state.sortOrder[props.text] ? 'arrow_upward' : 'arrow_downward'}
+        {props.sorting.sortOrder[props.text]
+          ? 'arrow_upward'
+          : 'arrow_downward'}
       </Icon>
     </Button>
   )
