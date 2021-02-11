@@ -3,13 +3,16 @@ import 'materialize-css'
 import { Navbar, Icon } from 'react-materialize'
 import routes from './router/routes.js'
 import providedNames from './repository/names.json'
+import { Redirect, useLocation } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 import store from './state/store.js'
 
 export default function App() {
+  const location = useLocation()
+
   return (
-    <BrowserRouter>
+    <div>
       <Navbar
         className='blue darken-2'
         alignLinks='right'
@@ -39,13 +42,17 @@ export default function App() {
 
       <Provider store={store}>
         <Switch>
-          {routes.map((route) => (
-            <Route path={route.path} key={route.path}>
-              <route.component names={providedNames} />
-            </Route>
-          ))}
+          {routes.map((route) =>
+            location.pathname == '/' ? (
+              <Redirect to='/table' />
+            ) : (
+              <Route path={route.path} key={route.path}>
+                <route.component names={providedNames} />
+              </Route>
+            )
+          )}
         </Switch>
       </Provider>
-    </BrowserRouter>
+    </div>
   )
 }
