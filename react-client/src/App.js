@@ -1,12 +1,12 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import 'materialize-css'
 import { Navbar, Icon } from 'react-materialize'
-import routes from './router/routes.js'
-import providedNames from './repository/names.json'
+import routes from './routes.js'
+import providedNames from './api/names.json'
 import { Redirect, useLocation } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
-import store from './state/store.js'
+import store from './store.js'
 
 export default function App() {
   const location = useLocation()

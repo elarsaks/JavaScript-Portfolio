@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Table as DataTable } from 'react-materialize'
-import SortButton from './components/SortButton'
+import SortButton from './NamesTableSortButton'
 
 const style = {
   dataTable: {

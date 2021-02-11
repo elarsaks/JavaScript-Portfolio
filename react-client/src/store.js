@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import tableReducer from './tableSlice'
+import namesReducer from './features/names/namesReducer'
 
 export default configureStore({
   reducer: {
-    counter: tableReducer,
+    names: namesReducer,
   },
 })

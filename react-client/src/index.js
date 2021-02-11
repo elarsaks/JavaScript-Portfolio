@@ -5,7 +5,7 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import 'materialize-css/dist/css/materialize.min.css'
-import store from './state/store'
+import store from './store.js'
 import { Provider } from 'react-redux'
 
 ReactDOM.render(
