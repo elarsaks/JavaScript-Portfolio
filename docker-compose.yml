@@ -6,7 +6,7 @@ networks:
 services:
   client:
     build:
-      context: ./client
+      context: ./vue-client
     command: 'sh -c "npm run serve"'
     depends_on:
       - api
@@ -14,15 +14,15 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - './client/src:/app/src'
-      - './client/package.json:/app/package.json'
-      - './client/package-lock.json:/app/package-lock.json'
+      - './vue-client/src:/app/src'
+      - './vue-client/package.json:/app/package.json'
+      - './vue-client/package-lock.json:/app/package-lock.json'
   api:
     container_name: api
     build:
       context: ./api/
       dockerfile: Dockerfile
-    networks: 
+    networks:
       - solita
     depends_on:
       - redis
@@ -44,7 +44,7 @@ services:
       - './api/package-lock.json:/app/package-lock.json'
   redis:
     image: redis:alpine
-    networks: 
+    networks:
       - solita
     ports:
       - 6379:6379
@@ -53,7 +53,7 @@ services:
     build:
       context: ./data/
       dockerfile: Dockerfile
-    networks: 
+    networks:
       - solita
     environment:
       POSTGRES_DB: solita
