@@ -1,13 +1,18 @@
-import names from '../../repository/names'
+import names from '../../api/names.js'
 
-export const GET_NAMES = 'GET_NAMES'
+export const namesLoading = () => ({ type: 'names/namesLoading' })
+export const namesLoaded = (names) => ({
+  type: 'todos/todosLoaded',
+  payload: names,
+})
 
-export const getNames = (params) => {
-  // Handle API request here
-  const payload = names.getNames(params)
+export const setError = (error) => ({
+  type: 'names/error',
+  payload: error.message,
+})
 
-  return {
-    type: 'GET_NAMES',
-    payload,
-  }
+// Thunk function
+export const fetchNames = (params) => async (dispatch) => {
+  dispatch(namesLoading())
+  names.getNames(params).then((resp) => dispatch(namesLoaded(resp.data)))
 }

@@ -1,8 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
-import namesReducer from './features/names/namesReducer'
+import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import rootReducer from './reducer'
 
-export default configureStore({
-  reducer: {
-    names: namesReducer,
-  },
-})
+const composedEnhancer = composeWithDevTools(
+  applyMiddleware(thunkMiddleware)
+  // other store enhancers if any
+)
+
+const store = createStore(rootReducer, composedEnhancer)
+export default store

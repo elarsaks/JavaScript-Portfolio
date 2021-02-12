@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Table as DataTable } from 'react-materialize'
 import SortButton from './NamesTableSortButton'
+import { fetchNames } from './namesActions.js'
 
 const style = {
   dataTable: {
@@ -11,6 +13,11 @@ const style = {
 }
 
 export default function Table(props) {
+  const loadingStatus = useSelector((state) => state.names.status)
+  const error = useSelector((state) => state.names.error)
+  const names = useSelector((state) => state.names.names)
+  const dispatch = useDispatch()
+
   const [sorting, setSorting] = useState({
     selectedColumn: 'names',
     sortOrder: {
@@ -29,7 +36,13 @@ export default function Table(props) {
       },
     })
 
-    // Call here function actually sorting a table
+    dispatch(
+      fetchNames({
+        column: sorting.selectedColumn,
+        order: sorting.sortOrder[sorting.selectedColumn] ? 'ASC' : 'DESC',
+      })
+    )
+    //console.log(loadingStatus, error, names)
   }
 
   return (
