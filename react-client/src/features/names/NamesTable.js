@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+// Can I import all use functonalities rect-redux?
 import { useSelector, useDispatch } from 'react-redux'
-import { Table as DataTable } from 'react-materialize'
-import SortButton from './NamesTableSortButton'
+import { Table as DataTable, Row, Col, ProgressBar } from 'react-materialize'
+import SortButton from '../../components/TableSortButton'
 import { fetchNames } from './namesActions.js'
 
 const style = {
@@ -67,6 +68,13 @@ export default function Table(props) {
             />
           </th>
         </tr>
+        {loadingStatus === 'loading' && (
+          <tr>
+            <td colspan='2'>
+              <ProgressBar />
+            </td>
+          </tr>
+        )}
       </thead>
       <tbody>
         {names.map((item) => (
