@@ -1,20 +1,8 @@
 const initialState = {
   error: 'null',
   status: 'idle',
-  names: [
-    {
-      'name': 'Ville',
-      'amount': 24,
-    },
-    {
-      'name': 'Anna',
-      'amount': 6,
-    },
-    {
-      'name': 'Antti',
-      'amount': 22,
-    },
-  ],
+  test: '',
+  names: [],
 }
 
 export default function namesReducer(state = initialState, action) {
@@ -36,7 +24,7 @@ export default function namesReducer(state = initialState, action) {
       return {
         ...state,
         status: 'idle',
-        name: action.payload,
+        names: action.payload,
       }
     }
     default:

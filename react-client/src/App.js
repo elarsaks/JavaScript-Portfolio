@@ -2,7 +2,6 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import 'materialize-css'
 import { Navbar, Icon } from 'react-materialize'
 import routes from './routes.js'
-import providedNames from './api/names.json'
 import { Redirect, useLocation } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
@@ -47,7 +46,7 @@ export default function App() {
               <Redirect to='/table' />
             ) : (
               <Route path={route.path} key={route.path}>
-                <route.component names={providedNames} />
+                <route.component />
               </Route>
             )
           )}

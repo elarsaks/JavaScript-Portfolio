@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Table as DataTable } from 'react-materialize'
 import SortButton from './NamesTableSortButton'
@@ -21,8 +21,8 @@ export default function Table(props) {
   const [sorting, setSorting] = useState({
     selectedColumn: 'names',
     sortOrder: {
-      names: true,
-      amount: false,
+      names: 'ASC',
+      amount: 'DESC',
     },
   })
 
@@ -32,18 +32,21 @@ export default function Table(props) {
       selectedColumn: column,
       sortOrder: {
         ...sorting.sortOrder,
-        [column]: !sorting.sortOrder[column],
+        [column]: sorting.sortOrder[column] === 'ASC' ? 'DESC' : 'ASC',
       },
     })
 
+    // Note: I know it is a bad practice to do so many API calls.
+    // But, I am trying to show my skills also with Redux, Node & Postgres.
     dispatch(
       fetchNames({
-        column: sorting.selectedColumn,
-        order: sorting.sortOrder[sorting.selectedColumn] ? 'ASC' : 'DESC',
+        column,
+        order: sorting.sortOrder[column],
       })
     )
-    //console.log(loadingStatus, error, names)
   }
+
+  useEffect(() => sortTable('names'), [])
 
   return (
     <DataTable style={style.dataTable} className='centered'>
@@ -66,7 +69,7 @@ export default function Table(props) {
         </tr>
       </thead>
       <tbody>
-        {props.names.map((item) => (
+        {names.map((item) => (
           <tr key={item.name}>
             <td>{item.name}</td>
             <td>{item.amount}</td>

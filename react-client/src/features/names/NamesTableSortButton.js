@@ -14,9 +14,9 @@ export default function SortButton(props) {
     >
       {props.text}
       <Icon right>
-        {props.sorting.sortOrder[props.text]
-          ? 'arrow_upward'
-          : 'arrow_downward'}
+        {props.sorting.sortOrder[props.text] === 'ASC'
+          ? 'arrow_downward'
+          : 'arrow_upward'}
       </Icon>
     </Button>
   )
