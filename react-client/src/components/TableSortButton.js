@@ -1,23 +1,16 @@
-import { Button, Icon } from 'react-materialize'
+import { Icon } from 'react-materialize'
 
 export default function SortButton(props) {
   return (
-    <Button
-      node='button'
-      waves='light'
-      className={
-        props.sorting.selectedColumn === props.text
-          ? 'blue darken-4'
-          : 'blue darken-2'
-      }
+    <a
+      className={props.isActive ? 'blue-text' : 'grey-text text-darken-3'}
+      style={{ cursor: 'pointer' }}
       onClick={() => props.sortTable()}
     >
       {props.text}
-      <Icon right>
-        {props.sorting.sortOrder[props.text] === 'ASC'
-          ? 'arrow_downward'
-          : 'arrow_upward'}
+      <Icon>
+        {props.sortOrder === 'ASC' ? 'arrow_upward' : 'arrow_downward'}
       </Icon>
-    </Button>
+    </a>
   )
 }
