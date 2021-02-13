@@ -81,7 +81,7 @@ export default function Table(props) {
           <th>
             <SortButton
               isActive={sorting.selectedColumn === 'amount'}
-              text={`Amount (Total: ${amountSum}) `}
+              text={`AMOUNT (Total: ${amountSum}) `}
               sortOrder={sorting.sortOrder['amount']}
               sortTable={() => sortTable('amount')}
             />

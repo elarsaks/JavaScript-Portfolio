@@ -5,7 +5,7 @@
       This application is built as part of my full-stack JavaScript portfolio.
       <br />
       You can find the exact same front end built in vue and Vuetify from
-      <a href="http://35.228.165.194:3000" target="_blank"> here</a>.
+      <a href="http://http://35.228.155.3:3000" target="_blank"> here</a>.
     </h4>
     <br />
     <h4>
