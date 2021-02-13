@@ -4,7 +4,7 @@ networks:
     name: solita
     driver: bridge
 services:
-  client:
+  vue-client:
     build:
       context: ./vue-client
     command: 'sh -c "npm run serve"'
