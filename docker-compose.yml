@@ -17,6 +17,19 @@ services:
       - './vue-client/src:/app/src'
       - './vue-client/package.json:/app/package.json'
       - './vue-client/package-lock.json:/app/package-lock.json'
+  react-client:
+    build:
+      context: ./react-client
+    command: 'sh -c "npm run start"'
+    depends_on:
+      - api
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - './react-client/src:/app/src'
+      - './react-client/package.json:/app/package.json'
+      - './react-client/package-lock.json:/app/package-lock.json'
   api:
     container_name: api
     build:
