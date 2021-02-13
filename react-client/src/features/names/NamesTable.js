@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // Can I import all use functonalities rect-redux?
 import { useSelector, useDispatch } from 'react-redux'
-import { Table as DataTable, Row, Col, ProgressBar } from 'react-materialize'
+import { Table as DataTable, ProgressBar } from 'react-materialize'
 import SortButton from '../../components/TableSortButton'
 import { fetchNames } from './namesActions.js'
 
@@ -18,6 +18,8 @@ export default function Table(props) {
   const error = useSelector((state) => state.names.error)
   const names = useSelector((state) => state.names.names)
   const dispatch = useDispatch()
+
+  const [amountSum, setAmountSum] = useState(0)
 
   const [sorting, setSorting] = useState({
     selectedColumn: 'names',
@@ -47,7 +49,22 @@ export default function Table(props) {
     )
   }
 
+  // Create array of amounts and reduce it into a single value
+  function getAmountSum() {
+    const sum =
+      names.length > 0
+        ? names
+            .map((name) => name.amount)
+            .reduce((accumulator, currentvalue) => {
+              return accumulator + currentvalue
+            })
+        : 0
+
+    setAmountSum(sum)
+  }
+
   useEffect(() => sortTable('names'), [])
+  useEffect(() => getAmountSum(), [names])
 
   return (
     <DataTable style={style.dataTable} className='centered'>
@@ -55,23 +72,39 @@ export default function Table(props) {
         <tr>
           <th>
             <SortButton
-              text='names'
-              sorting={sorting}
+              isActive={sorting.selectedColumn === 'names'}
+              text={`NAMES (Count: ${names.length}) `}
+              sortOrder={sorting.sortOrder['names']}
               sortTable={() => sortTable('names')}
             />
           </th>
           <th>
             <SortButton
-              text='amount'
-              sorting={sorting}
+              isActive={sorting.selectedColumn === 'amount'}
+              text={`Amount (Total: ${amountSum}) `}
+              sortOrder={sorting.sortOrder['amount']}
               sortTable={() => sortTable('amount')}
             />
           </th>
         </tr>
         {loadingStatus === 'loading' && (
           <tr>
-            <td colspan='2'>
+            <td colSpan='2'>
               <ProgressBar />
+            </td>
+          </tr>
+        )}
+        {error && (
+          <tr>
+            <td colSpan='2'>
+              <div className='card horizontal'>
+                <div className='card-content red-text text-darken-4"'>
+                  <p style={{ fontSize: 'large' }}>
+                    Error: Oops something went wrong :( Please contact system
+                    administrator.
+                  </p>
+                </div>
+              </div>
             </td>
           </tr>
         )}

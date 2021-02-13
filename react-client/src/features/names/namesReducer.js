@@ -1,5 +1,5 @@
 const initialState = {
-  error: 'null',
+  error: null,
   status: 'idle',
   test: '',
   names: [],
@@ -8,7 +8,6 @@ const initialState = {
 export default function namesReducer(state = initialState, action) {
   switch (action.type) {
     case 'names/error': {
-      const error = action.payload
       return {
         ...state,
         error: action.payload,
@@ -23,8 +22,9 @@ export default function namesReducer(state = initialState, action) {
     case 'names/namesLoaded': {
       return {
         ...state,
-        status: 'idle',
+        error: null,
         names: action.payload,
+        status: 'idle',
       }
     }
     default:

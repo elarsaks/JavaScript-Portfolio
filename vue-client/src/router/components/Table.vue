@@ -35,10 +35,6 @@
 </template>
 
 <script>
-/* NOTE!
- *   Table and ReverseTable are identical copies.
- *   Don't waste time checking both of them.
- */
 import SortIcon from '../../components/SortIcon.vue'
 import { mapActions } from 'vuex'
 
@@ -63,7 +59,6 @@ export default {
     })
   },
   computed: {
-    // TODO: Use SQL to get the SUM of amounts
     mountSum() {
       return this.names.length > 0 ? this.getAmountSum() : 0
     },
@@ -95,7 +90,7 @@ export default {
     getAmountSum() {
       // Create array of amounts and reduce it into a single value
       return this.names
-        .map(name => name.amount)
+        .map((name) => name.amount)
         .reduce((accumulator, currentvalue) => {
           return accumulator + currentvalue
         })
