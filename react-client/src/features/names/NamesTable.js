@@ -51,17 +51,20 @@ export default function Table(props) {
 
   // Create array of amounts and reduce it into a single value
   function getAmountSum() {
-    const sum = names
-      .map((name) => name.amount)
-      .reduce((accumulator, currentvalue) => {
-        return accumulator + currentvalue
-      })
+    const sum =
+      names.length > 0
+        ? names
+            .map((name) => name.amount)
+            .reduce((accumulator, currentvalue) => {
+              return accumulator + currentvalue
+            })
+        : 0
 
     setAmountSum(sum)
   }
 
   useEffect(() => sortTable('names'), [])
-  useEffect(() => getAmountSum(), [])
+  useEffect(() => getAmountSum(), [names])
 
   return (
     <DataTable style={style.dataTable} className='centered'>
@@ -78,7 +81,7 @@ export default function Table(props) {
           <th>
             <SortButton
               isActive={sorting.selectedColumn === 'amount'}
-              text={`NAMES (Total: ${amountSum}) `}
+              text={`Amount (Total: ${amountSum}) `}
               sortOrder={sorting.sortOrder['amount']}
               sortTable={() => sortTable('amount')}
             />
@@ -86,8 +89,22 @@ export default function Table(props) {
         </tr>
         {loadingStatus === 'loading' && (
           <tr>
-            <td colspan='2'>
+            <td colSpan='2'>
               <ProgressBar />
+            </td>
+          </tr>
+        )}
+        {error && (
+          <tr>
+            <td colSpan='2'>
+              <div className='card horizontal'>
+                <div className='card-content red-text text-darken-4"'>
+                  <p style={{ fontSize: 'large' }}>
+                    Error: Oops something went wrong :( Please contact system
+                    administrator.
+                  </p>
+                </div>
+              </div>
             </td>
           </tr>
         )}

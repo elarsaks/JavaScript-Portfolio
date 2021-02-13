@@ -12,8 +12,10 @@ export const setError = (error) => ({
 })
 
 // Thunk function
-export const fetchNames = (params) => async (dispatch) => {
+export const fetchNames = (params) => (dispatch) => {
   dispatch(namesLoading())
-  const response = await names.getNames(params)
-  dispatch(namesLoaded(response.data))
+  names
+    .getNames(params)
+    .then((response) => dispatch(namesLoaded(response.data)))
+    .catch((err) => dispatch(setError(err)))
 }
