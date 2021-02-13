@@ -4,7 +4,7 @@
     <h4>
       This application is built as part of my full-stack JavaScript portfolio.
       <br />
-      You can find the exact same front end built in vue and Vuetify from
+      You can find the exact same front end built in React and Materialize from
       <a href="http://http://35.228.155.3:3000" target="_blank"> here</a>.
     </h4>
     <br />
