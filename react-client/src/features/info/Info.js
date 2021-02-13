@@ -10,6 +10,7 @@ export default function Info() {
         <a href='http://35.228.165.194:8080' target='_blank'>
           here
         </a>
+        .
       </h4>
       <br></br>
       <br></br>

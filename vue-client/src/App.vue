@@ -9,8 +9,7 @@
       elevation="2"
     >
       <p>
-        Error: Oops something went wrong :( Please contact system
-        administrator.
+        Error: Oops something went wrong :( Please contact system administrator.
       </p>
     </v-alert>
 
@@ -38,7 +37,7 @@ export default {
   computed: mapState(['error', 'loading', 'names']),
   data() {
     return {
-      pages: ['table', 'reverse-table'],
+      pages: ['table', 'info'],
     }
   },
 }
