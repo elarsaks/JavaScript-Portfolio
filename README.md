@@ -2,11 +2,19 @@
 
 This repository serves as an example of my current skill level with full-stack JavaScript
 
-## Environments
+## Testing
 
-Environment | URL  
-Testing | http://35.228.155.3:8080/ && http://35.228.155.3:3000/ && http://35.228.155.3:3001/  
-Development-local | http://localhost:8080/ && http://localhost:3000/ && http://localhost:3001/
+### Cloud
+API-ENDPOINT | URL  
+Vue-client | http://35.228.155.3:8080/  
+React-client | http://35.228.155.3:3000/  
+Api (Node JS) | http://35.228.155.3:3001/   
+
+### Local
+API-ENDPOINT | URL  
+Vue-client | http://localhost:8080/  
+React-client | http://localhost:3000/  
+Api (Node JS) | http://localhost:3001/  
 
 ## Local development
 
