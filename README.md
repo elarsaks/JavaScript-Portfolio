@@ -1,4 +1,4 @@
-# Solita
+# JavaScript Portfolio
 
 This repository serves as an example of my current skill level with full-stack JavaScript
 
