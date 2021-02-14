@@ -6,7 +6,7 @@ export default function Info() {
         This application is built as part of my full-stack JavaScript portfolio.
         <br></br>
         You can find the exact same front end built in Vue and Vuetify from{' '}
-        <a href='http://http://35.228.155.3:8080' target='_blank'>
+        <a href='http://35.228.155.3:8080' target='_blank'>
           here
         </a>
         .
