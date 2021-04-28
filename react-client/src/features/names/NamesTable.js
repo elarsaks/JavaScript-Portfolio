@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Table as DataTable, ProgressBar } from 'react-materialize'
-import SortButton from '../../components/TableSortButton'
+import { SortButton } from '../../components/TableSortButton'
 import { fetchNames } from './namesActions.js'
 
 const style = {
