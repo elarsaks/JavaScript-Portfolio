@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 import 'materialize-css'
 import { Navbar, Icon } from 'react-materialize'
 import routes from './routes.js'
@@ -27,10 +27,10 @@ export default function App() {
           draggable: true,
           edge: 'left',
           inDuration: 250,
-          onCloseEnd: null,
-          onCloseStart: null,
-          onOpenEnd: null,
-          onOpenStart: null,
+          onCloseEnd: () => 0,
+          onCloseStart: () => 0,
+          onOpenEnd: () => 0,
+          onOpenStart: () => 0,
           outDuration: 200,
           preventScrolling: true,
         }}
