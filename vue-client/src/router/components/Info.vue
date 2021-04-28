@@ -10,7 +10,7 @@
     <br />
     <h4>
       <a href="https://github.com/elarsaks/solita" target="_blank">
-        Link to projects GitHub
+        Link to project GitHub
       </a>
     </h4>
   </div>

@@ -1,8 +1,4 @@
 version: '3.5'
-networks:
-  solita:
-    name: solita
-    driver: bridge
 services:
   client:
     build:
@@ -35,8 +31,6 @@ services:
     build:
       context: ./api/
       dockerfile: Dockerfile
-    networks:
-      - solita
     depends_on:
       - redis
       - postgres
@@ -44,7 +38,6 @@ services:
     environment:
       POSTGRES_HOST: postgres
       POSTGRES:PORT: 5432
-      POSTGRES_DB: solita
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
       REDIS_URL: redis://redis:6379
@@ -57,8 +50,6 @@ services:
       - './api/package-lock.json:/app/package-lock.json'
   redis:
     image: redis:alpine
-    networks:
-      - solita
     ports:
       - 6379:6379
   postgres:
@@ -66,8 +57,6 @@ services:
     build:
       context: ./data/
       dockerfile: Dockerfile
-    networks:
-      - solita
     environment:
       POSTGRES_DB: solita
       POSTGRES_USERNAME: postgres

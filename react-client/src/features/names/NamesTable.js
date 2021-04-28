@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// Can I import all use functonalities rect-redux?
 import { useSelector, useDispatch } from 'react-redux'
 import { Table as DataTable, ProgressBar } from 'react-materialize'
 import SortButton from '../../components/TableSortButton'
