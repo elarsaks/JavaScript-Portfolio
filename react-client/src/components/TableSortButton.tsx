@@ -1,9 +1,8 @@
 import { Icon } from 'react-materialize'
-
 interface SortButtonProps {
   isActive: boolean,
   sortOrder: string
-  sortTable: any,
+  sortTable: () => void,
   text: string,
 }
 

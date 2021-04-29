@@ -1,4 +1,4 @@
-import Table from './features/names/NamesTable.js'
+import { Table} from './features/names/NamesTable'
 import Info from './features/info/Info.js'
 
 export default [

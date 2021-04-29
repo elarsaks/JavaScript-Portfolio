@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Table as DataTable, ProgressBar } from 'react-materialize'
 import { SortButton } from '../../components/TableSortButton'
-import { fetchNames } from './namesActions.js'
+import { fetchNames } from './namesActions'
 
 const style = {
   dataTable: {
@@ -12,15 +12,16 @@ const style = {
   },
 }
 
-export default function Table(props) {
-  const loadingStatus = useSelector((state) => state.names.status)
-  const error = useSelector((state) => state.names.error)
-  const names = useSelector((state) => state.names.names)
+export const Table = () => {
+
+  const loadingStatus: string = useSelector((state: any) => state.names.status)
+  const error: null | string = useSelector((state: NameState) => state.names.error)
+  const names: Name[] = useSelector((state: NameState) => state.names.names)
   const dispatch = useDispatch()
 
   const [amountSum, setAmountSum] = useState(0)
 
-  const [sorting, setSorting] = useState({
+  const [sorting, setSorting] = useState<SortingState>({
     selectedColumn: 'names',
     sortOrder: {
       names: 'ASC',
@@ -28,7 +29,7 @@ export default function Table(props) {
     },
   })
 
-  function sortTable(column) {
+  function sortTable(column: string) {
     setSorting({
       ...sorting,
       selectedColumn: column,
@@ -38,8 +39,6 @@ export default function Table(props) {
       },
     })
 
-    // Note: I know it is a bad practice to do so many API calls.
-    // But, I am trying to show my skills also with Redux, Node & Postgres.
     dispatch(
       fetchNames({
         column,
@@ -53,10 +52,10 @@ export default function Table(props) {
     const sum =
       names.length > 0
         ? names
-            .map((name) => name.amount)
-            .reduce((accumulator, currentvalue) => {
-              return accumulator + currentvalue
-            })
+          .map((name: Name) => name.amount)
+          .reduce((accumulator: number, currentvalue: number) => {
+            return accumulator + currentvalue
+          })
         : 0
 
     setAmountSum(sum)
@@ -88,14 +87,14 @@ export default function Table(props) {
         </tr>
         {loadingStatus === 'loading' && (
           <tr>
-            <td colSpan='2'>
+            <td colSpan={2}>
               <ProgressBar />
             </td>
           </tr>
         )}
         {error && (
           <tr>
-            <td colSpan='2'>
+            <td colSpan={2}>
               <div className='card horizontal'>
                 <div className='card-content red-text text-darken-4"'>
                   <p style={{ fontSize: 'large' }}>
@@ -109,7 +108,7 @@ export default function Table(props) {
         )}
       </thead>
       <tbody>
-        {names.map((item) => (
+        {names.map((item: Name) => (
           <tr key={item.name}>
             <td>{item.name}</td>
             <td>{item.amount}</td>

@@ -1,0 +1,22 @@
+type Name = {
+  name: string
+  amount: number
+}
+
+type SortOrder = {
+  [names: string]: string
+  [amount: string]: string
+}
+
+type SortingState = {
+  selectedColumn: string
+  sortOrder: ISortOrder
+}
+
+type NameState = {
+  names: {
+    error: null | string,
+    status: string,
+    names: Name[],
+  }
+}

@@ -10,7 +10,7 @@ export default function namesReducer(state = initialState, action) {
     case 'names/error': {
       return {
         ...state,
-        error: action.payload,
+        error: action.payload, //Make it error.msg
       }
     }
     case 'names/namesLoading': {

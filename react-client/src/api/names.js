@@ -10,6 +10,8 @@ function getNames(params) {
     params: params,
   }).then((resp) => resp) */
 
+    
+    // ADD HERE 5 minute cache
   const data = [
     {
         "name": "Ville",
@@ -94,7 +96,7 @@ function getNames(params) {
   ]
   
 
-  return new Promise(resolve => setTimeout(() => resolve({data: data}), 1000));
+  return new Promise(resolve => setTimeout(() => resolve({data: data}), 500));
 }
 
 module.exports = { getNames }
