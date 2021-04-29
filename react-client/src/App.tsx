@@ -1,11 +1,10 @@
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
-import 'materialize-css'
+import { Switch, Route, Link } from 'react-router-dom'
 import { Navbar, Icon } from 'react-materialize'
-import routes from './routes.js'
 import { Redirect, useLocation } from 'react-router-dom'
-
 import { Provider } from 'react-redux'
-import store from './store.js'
+import 'materialize-css'
+import routes from './routes'
+import store from './store'
 
 export default function App() {
   const location = useLocation()
@@ -27,10 +26,10 @@ export default function App() {
           draggable: true,
           edge: 'left',
           inDuration: 250,
-          onCloseEnd: null,
-          onCloseStart: null,
-          onOpenEnd: null,
-          onOpenStart: null,
+          onCloseEnd: () => 0,
+          onCloseStart: () => 0,
+          onOpenEnd: () => 0,
+          onOpenStart: () => 0,
           outDuration: 200,
           preventScrolling: true,
         }}

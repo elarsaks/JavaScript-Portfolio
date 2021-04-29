@@ -1,5 +1,5 @@
-import Table from './features/names/NamesTable.js'
-import Info from './features/info/Info.js'
+import { Table} from './features/names/NamesTable'
+import Info from './features/info/Info'
 
 export default [
   {

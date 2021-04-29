@@ -1,11 +1,10 @@
-const initialState = {
+const initialState: NameState = {
   error: null,
   status: 'idle',
-  test: '',
   names: [],
 }
 
-export default function namesReducer(state = initialState, action) {
+export default function namesReducer(state = initialState, action: any) {
   switch (action.type) {
     case 'names/error': {
       return {
