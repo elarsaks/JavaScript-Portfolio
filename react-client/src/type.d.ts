@@ -14,9 +14,12 @@ type SortingState = {
 }
 
 type NameState = {
-  names: {
     error: null | string,
     status: string,
     names: Name[],
-  }
+}
+
+type Params = {
+  column: string,
+  order: string
 }

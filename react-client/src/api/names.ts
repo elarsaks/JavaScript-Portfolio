@@ -1,6 +1,6 @@
 //const axios = require('axios')
 
-function getNames(params) {
+ const getNames = (params: Params) => {
   /*
   return axios({
     // Link for local testing
@@ -99,4 +99,4 @@ function getNames(params) {
   return new Promise(resolve => setTimeout(() => resolve({data: data}), 500));
 }
 
-module.exports = { getNames }
+export default{ getNames }

@@ -3,8 +3,8 @@ import { Navbar, Icon } from 'react-materialize'
 import { Redirect, useLocation } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import 'materialize-css'
-import routes from './routes.js'
-import store from './store.js'
+import routes from './routes'
+import store from './store'
 
 export default function App() {
   const location = useLocation()

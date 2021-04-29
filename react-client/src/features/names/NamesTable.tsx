@@ -14,9 +14,9 @@ const style = {
 
 export const Table = () => {
 
-  const loadingStatus: string = useSelector((state: any) => state.names.status)
-  const error: null | string = useSelector((state: NameState) => state.names.error)
-  const names: Name[] = useSelector((state: NameState) => state.names.names)
+  const loadingStatus: string = useSelector((state: any) => state.status)
+  const error: null | string = useSelector((state: NameState) => state.error)
+  const names: Name[] = useSelector((state: NameState) => state.names)
   const dispatch = useDispatch()
 
   const [amountSum, setAmountSum] = useState(0)
