@@ -25,3 +25,5 @@ export const SortButton: React.FC<SortButtonProps> = ({
     </a>
   )
 }
+
+export default SortButton
