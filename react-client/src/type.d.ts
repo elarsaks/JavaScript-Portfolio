@@ -5,12 +5,12 @@ type Name = {
 
 type SortOrder = {
   [names: string]: string
-  [amount: string]: string
+//  [amount: string]: string
 }
 
 type SortingState = {
   selectedColumn: string
-  sortOrder: ISortOrder
+  sortOrder: SortOrder
 }
 
 type NameState = {
