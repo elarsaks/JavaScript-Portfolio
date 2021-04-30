@@ -1,4 +1,3 @@
-/*
 const axios = require('axios')
 
  const getNames = (params: Params) => {
@@ -12,9 +11,8 @@ const axios = require('axios')
 }
 
 export default{ getNames }
-*/
 
-// FAKE API for hosting it whitout back-end
+/* FAKE API for hosting it whitout back-end
 const getNames = (params: Params) => {
     console.log('Get: ', params)
     const data = [
@@ -104,3 +102,4 @@ const getNames = (params: Params) => {
 }
 
 export default{ getNames } 
+*/

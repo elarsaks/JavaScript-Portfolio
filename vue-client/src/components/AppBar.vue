@@ -14,14 +14,14 @@
 
 <script>
 export default {
-  name: 'AppBar',
+  name: "AppBar",
   props: {
     pages: {
       type: Array,
-      required: true,
-    },
-  },
-}
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped>

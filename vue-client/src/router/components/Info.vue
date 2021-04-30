@@ -5,11 +5,14 @@
       This application is built as part of my full-stack JavaScript portfolio.
       <br />
       You can find the exact same front end built in React and Materialize from
-      <a href="http://35.228.155.3:3000" target="_blank"> here</a>.
+      <a href="http://localhost:3000/table" target="_blank"> here</a>.
     </h4>
     <br />
     <h4>
-      <a href="https://github.com/elarsaks/solita" target="_blank">
+      <a
+        href="https://github.com/elarsaks/JavaScript-Portfolio"
+        target="_blank"
+      >
         Link to project GitHub
       </a>
     </h4>

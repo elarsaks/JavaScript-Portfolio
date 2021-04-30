@@ -8,7 +8,7 @@ export default function Info() {
                 <br></br>
                 You can find the exact same front end built in vue and Vuetify
                 from{" "}
-                <a href='http://35.228.165.194:8080' target='_blank'>
+                <a href='http://localhost:8080/table' target='_blank'>
                     here
                 </a>
                 .
