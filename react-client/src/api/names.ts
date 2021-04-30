@@ -12,8 +12,9 @@ const axios = require('axios')
 
 export default{ getNames }
 
-/* FAKE API for hosting in whitout back-end
-const getNames = () => {
+/* FAKE API for hosting it whitout back-end
+const getNames = (params: Params) => {
+    console.log('Get: ', params)
     const data = [
         {
             "name": "Ville",
