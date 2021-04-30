@@ -6,9 +6,9 @@ This repository serves as an example of my current skill level with full-stack J
 
 ### Cloud
 API-ENDPOINT | URL  
-Vue-client | http://35.228.155.3:8080/  
-React-client | http://35.228.155.3:3000/  
-Api (Node JS) | http://35.228.155.3:3001/   
+Vue-client | http://javascript-portfolio-vue-client.s3-website.eu-north-1.amazonaws.com/table/  
+React-client | http://javascript-portfolio-react-client.s3-website.eu-north-1.amazonaws.com/table/  
+Api (Node JS) | Is not hosted due to unnecessary cost  
 
 ### Local
 API-ENDPOINT | URL  
