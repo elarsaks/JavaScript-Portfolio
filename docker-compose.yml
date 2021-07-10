@@ -1,31 +1,31 @@
 version: '3.5'
 services:
-  #vue-client:
-    #build:
-    #  context: ./vue-client
-    #command: 'sh -c "npm run serve"'
-    #depends_on:
-      #- api
-    #restart: unless-stopped
-    #ports:
-    #  - 8080:8080
-    #volumes:
-    #  - './vue-client/src:/app/src'
-    #  - './vue-client/package.json:/app/package.json'
-    #  - './vue-client/package-lock.json:/app/package-lock.json'
-  #react-client:
-    #build:
-    #  context: ./react-client
-    #command: 'sh -c "npm run start"'
-    #depends_on:
-    #  - api
-    #restart: unless-stopped
-    #ports:
-    #  - 3000:3000
-    #volumes:
-    #  - './react-client/src:/app/src'
-    #  - './react-client/package.json:/app/package.json'
-    #  - './react-client/package-lock.json:/app/package-lock.json'
+  vue-client:
+    build:
+      context: ./vue-client
+    command: 'sh -c "npm run serve"'
+    depends_on:
+      - api
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    volumes:
+      - './vue-client/src:/app/src'
+      - './vue-client/package.json:/app/package.json'
+      - './vue-client/package-lock.json:/app/package-lock.json'
+  react-client:
+    build:
+      context: ./react-client
+    command: 'sh -c "npm run start"'
+    depends_on:
+      - api
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - './react-client/src:/app/src'
+      - './react-client/package.json:/app/package.json'
+      - './react-client/package-lock.json:/app/package-lock.json'
   api:
     container_name: api
     build:
