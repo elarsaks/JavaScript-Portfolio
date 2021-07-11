@@ -32,7 +32,7 @@ Api (Node JS) | http://localhost:3001/
 
 ## Architecture
 
-<img src="https://s3.eu-north-1.amazonaws.com/elar-saks.info/full-stack-js-architecture.png" />
+<img src="https://s3.eu-north-1.amazonaws.com/elar-saks.info/full-stack.js-arhitecture.png" />
 
 ### api
 
