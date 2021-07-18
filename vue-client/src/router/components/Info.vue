@@ -5,7 +5,7 @@
       This application is built as part of my full-stack JavaScript portfolio.
       <br />
       You can find the exact same front end built in React and Materialize from
-      <a href="http://localhost:3000/table" target="_blank"> here</a>.
+      <a href="http://javascript-portfolio-react-client.s3-website.eu-north-1.amazonaws.com/info" target="_blank"> here</a>.
     </h4>
     <br />
     <h4>
