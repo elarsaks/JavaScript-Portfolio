@@ -8,7 +8,7 @@ This repository serves as an example of my current skill level with full-stack J
 API-ENDPOINT | URL  
 Vue-client | http://javascript-portfolio-vue-client.s3-website.eu-north-1.amazonaws.com/  
 React-client | http://javascript-portfolio-react-client.s3-website.eu-north-1.amazonaws.com/  
-Api (Node JS) | http://34.135.18.29:3001/
+Api (Node JS) | Back-end kept getting hacked by crypto miners and is therefore down. 
 
 ### Local
 API-ENDPOINT | URL  
