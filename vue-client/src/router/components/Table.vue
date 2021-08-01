@@ -35,68 +35,68 @@
 </template>
 
 <script>
-import SortIcon from '../../components/SortIcon.vue'
-import { mapActions } from 'vuex'
+import SortIcon from "../../components/SortIcon.vue";
+import { mapActions } from "vuex";
 
 export default {
-  name: 'Table',
+  name: "Table",
   props: {
     names: {
       type: Array,
       required: true,
       default() {
-        return []
-      },
-    },
+        return [];
+      }
+    }
   },
   components: {
-    SortIcon,
+    SortIcon
   },
   created() {
     this.getNames({
       column: this.selectedColumn,
-      order: this.sort[this.selectedColumn] ? 'DESC' : 'ASC',
-    })
+      order: this.sort[this.selectedColumn] ? "DESC" : "ASC"
+    });
   },
   computed: {
     mountSum() {
-      return this.names.length > 0 ? this.getAmountSum() : 0
-    },
+      return this.names.length > 0 ? this.getAmountSum() : 0;
+    }
   },
   data() {
     return {
-      selectedColumn: 'names',
+      selectedColumn: "names",
       sort: {
         names: true,
-        amount: false,
-      },
-    }
+        amount: false
+      }
+    };
   },
   methods: {
-    ...mapActions(['getNames']),
+    ...mapActions(["getNames"]),
     setSortBy(column) {
       if (this.selectedColumn == column) {
-        this.sort[column] = !this.sort[column]
+        this.sort[column] = !this.sort[column];
       } else {
-        this.selectedColumn = column
-        this.sort[column] = !this.sort[column]
+        this.selectedColumn = column;
+        this.sort[column] = !this.sort[column];
       }
 
       this.getNames({
         column: this.selectedColumn,
-        order: this.sort[this.selectedColumn] ? 'DESC' : 'ASC',
-      })
+        order: this.sort[this.selectedColumn] ? "DESC" : "ASC"
+      });
     },
     getAmountSum() {
       // Create array of amounts and reduce it into a single value
       return this.names
-        .map((name) => name.amount)
+        .map(name => name.amount)
         .reduce((accumulator, currentvalue) => {
-          return accumulator + currentvalue
-        })
-    },
-  },
-}
+          return accumulator + currentvalue;
+        });
+    }
+  }
+};
 </script>
 
 <style scoped></style>

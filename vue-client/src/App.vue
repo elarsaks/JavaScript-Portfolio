@@ -24,23 +24,23 @@
 </template>
 
 <script>
-import AppBar from './components/AppBar'
-import Footer from './components/Footer'
-import { mapState } from 'vuex'
+import AppBar from "./components/AppBar";
+import Footer from "./components/Footer";
+import { mapState } from "vuex";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     AppBar,
-    Footer,
+    Footer
   },
-  computed: mapState(['error', 'loading', 'names']),
+  computed: mapState(["error", "loading", "names"]),
   data() {
     return {
-      pages: ['table', 'info'],
-    }
-  },
-}
+      pages: ["table", "info"]
+    };
+  }
+};
 </script>
 
 <style scoped>

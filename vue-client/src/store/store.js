@@ -31,7 +31,7 @@ export default new Vuex.Store({
         .getNames(params)
         .then(data => commit('setNames', data))
         .then(() => commit('setLoading'))
-        .catch(err => commit('setError', err))
+        //.catch(err => commit('setError', err))
     },
   },
 })
