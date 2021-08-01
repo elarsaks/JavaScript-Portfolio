@@ -23,10 +23,3 @@ export default function Info() {
         </div>
     )
 }
-
-{
-    Daniil: "Karmazon",
-        Alexander: "Korsakov",
-        
-    
-}
