@@ -2,6 +2,11 @@
 
 This repository serves as an example of my current skill level with full-stack JavaScript
 
+
+## Architecture
+
+<img src="https://s3.eu-north-1.amazonaws.com/elar-saks.info/full-stack.js-arhitecture.png" />
+
 ## Testing
 
 ### Cloud
@@ -29,10 +34,6 @@ Api (Node JS) | http://localhost:3001/
 2. Run 'docker-compose up --build' in the project root
 3. Wait until the application installs itself
 4. Test it on on http://localhost:8080/ && http://localhost:3000/ && http://localhost:3001/
-
-## Architecture
-
-<img src="https://s3.eu-north-1.amazonaws.com/elar-saks.info/full-stack.js-arhitecture.png" />
 
 ### api
 
